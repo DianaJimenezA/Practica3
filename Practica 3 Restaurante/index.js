@@ -31,7 +31,6 @@ app.get('/NotificarRepartidor', (req, res)=>{
         res.send(cuerpo)
     })
 })
-
 app.listen(3000, ()=>{
     console.log('Servico de Restaurante')
 })
