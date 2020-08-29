@@ -12,17 +12,36 @@ app.use(bodyParser.json())
 app.get('/', (req, res)=>{
     res.send("Servicio de ESB")
 })
-//Recibir pedido del cliente
-app.get('/NuevaOrden', (req, res)=>{
-    console.log("Se recibio la orden Correctamente")
-    res.send("Pedido Recibido, Su orden fue procesada")
+
+//Recibir pedido del cliente y hacer pedido a restaurante
+app.get('/HacerPedido', (req, res)=>{
+    var cuerpo="respuesta solicitud"
+    request("http://localhost:3000/NuevaOrden", function(err, body){
+        cuerpo= body.body   
+        console.log(cuerpo)
+        res.send(cuerpo)
+    })
 })
-//Informar Estado del pedido al cliente
-app.get('/EstadoOrden', (req, res)=>{
-    console.log("El cliente solicito verificacion de Pedido")
-    res.send("Pedido en preparacion")
+
+//Recibir  solicitud de estado de pedido del cliente y hacer solicitud del estado al restaurante
+app.get('/SolicitarEstadoPedido', (req, res)=>{
+    var cuerpo="respuesta solicitud"
+    request("http://localhost:3000/EstadoOrden", function(err, body){
+        cuerpo= body.body   
+        console.log(cuerpo)
+        res.send(cuerpo)
+    })
 })
-//Notificar al repartidor
+//Recibir  solicitud de estado de pedido del cliente y hacer solicitud del estado al  repartidor
+app.get('/VerificarPedidoRepartidor', (req, res)=>{
+    var cuerpo="respuesta solicitud"
+    request("http://localhost:4000/EstadoOrdenPedido", function(err, body){
+        cuerpo= body.body   
+        console.log(cuerpo)
+        res.send(cuerpo)
+    })
+})
+//Notificar al repartidor por medio del ESB
 app.get('/NotificarRepartidor', (req, res)=>{
     var cuerpo="respuesta solicitud"
     request("http://localhost:4000/RecibirPedido", function(err, body){
@@ -31,6 +50,8 @@ app.get('/NotificarRepartidor', (req, res)=>{
         res.send(cuerpo)
     })
 })
-app.listen(3000, ()=>{
+
+
+app.listen(2000, ()=>{
     console.log('Servico de Restaurante')
 })

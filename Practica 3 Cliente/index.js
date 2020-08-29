@@ -12,30 +12,30 @@ app.use(bodyParser.json())
 app.get('/', (req, res)=>{
     res.send("Servicio de Cliente")
 })
-//Hacer Pedido al restaurante
+//Hacer Pedido al ESB -> restaurante
 app.get('/SolicitarPedido', (req, res)=>{
     var cuerpo="respuesta solicitud"
-    request("http://localhost:3000/NuevaOrden", function(err, body){
+    request("http://localhost:2000/HacerPedido", function(err, body){
         cuerpo= body.body   
         console.log(cuerpo)
         res.send(cuerpo)
     })
     
 })
-//Verificar estado del pedido al restaurante
+//Verificar estado del pedido al ESB -> al restaurante
 app.get('/SolicitarEstadoPedido', (req, res)=>{
     var cuerpo="respuesta solicitud"
-    request("http://localhost:3000/EstadoOrden ", function(err, body){
+    request("http://localhost:2000/SolicitarEstadoPedido ", function(err, body){
         cuerpo= body.body   
         console.log(cuerpo)
         res.send(cuerpo)
     })
 })
-//Verificar estado del pedido al repartidor
+//Verificar estado del pedido al ESB -> al restaurante
 
 app.get('/VerificarPedidoRepartidor', (req, res)=>{
     var cuerpo="respuesta solicitud"
-    request("http://localhost:4000/EstadoOrdenPedido", function(err, body){
+    request("http://localhost:2000/VerificarPedidoRepartidor", function(err, body){
         cuerpo= body.body   
         console.log(cuerpo)
         res.send(cuerpo)

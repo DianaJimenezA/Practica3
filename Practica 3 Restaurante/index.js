@@ -12,20 +12,20 @@ app.use(bodyParser.json())
 app.get('/', (req, res)=>{
     res.send("Servicio de Restaurante")
 })
-//Recibir pedido del cliente
+//Recibir pedido del cliente por medio del ESB
 app.get('/NuevaOrden', (req, res)=>{
     console.log("Se recibio la orden Correctamente")
     res.send("Pedido Recibido, Su orden fue procesada")
 })
-//Informar Estado del pedido al cliente
+//Informar Estado del pedido al cliente por medio del ESB
 app.get('/EstadoOrden', (req, res)=>{
     console.log("El cliente solicito verificacion de Pedido")
     res.send("Pedido en preparacion")
 })
-//Notificar al repartidor
+//Notificar al repartidor por medio del ESB
 app.get('/NotificarRepartidor', (req, res)=>{
     var cuerpo="respuesta solicitud"
-    request("http://localhost:4000/RecibirPedido", function(err, body){
+    request("http://localhost:2000/NotificarRepartidor", function(err, body){
         cuerpo= body.body   
         console.log(cuerpo)
         res.send(cuerpo)
