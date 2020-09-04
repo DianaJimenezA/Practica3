@@ -1,9 +1,10 @@
-#Practica3
-Aplicacion SOA para simular  un servicio de crowdsourcing de comida a domicilio
-Link de video de explicacion de la Practica:  https://youtu.be/q2ZSTsepY-U
+#Practica4
+Aplicacion SOA para simular  un servicio de crowdsourcing de comida a domicilio utilizando un orquestador de servicios
+Link de video de explicacion de la Practica 3:  https://youtu.be/q2ZSTsepY-U
+Link de viedo de la practica 4: https://youtu.be/T7TVrFfmazs
 
 #Descripcion de Herramientas
-Para la realizacion de esta practica se utilizo NodeJs para cada una de las aplicaciones del cliente, restautante y repartidor.
+Para la realizacion de esta practica se utilizo NodeJs para cada una de las aplicaciones del cliente, restautante, repartidor y ESB.
 
 #Aplicaciones:
 1. Cliente
@@ -24,3 +25,9 @@ http://localhost:3000/NotificarRepartidor
 -Informar estado del pedido al cliente
 -Marcar como entregado
 http://localhost:4000/CambiarEstado
+
+4. ESB
+-Se encargara de recibir las solicitudes de cada uno de los servicios de cliente, restaurante y repartidor. La aplicacion se levanta en el puerto 2000
+http://localhost:2000
+
+Cada uno de los servicios cuenta con seguimiento en la consola con la informacion de las operaciones que se realizan. Tanto de solicitud como de respuesta.
