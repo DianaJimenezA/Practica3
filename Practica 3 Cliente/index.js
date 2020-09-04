@@ -17,6 +17,8 @@ app.get('/SolicitarPedido', (req, res)=>{
     var cuerpo="respuesta solicitud"
     request("http://localhost:2000/HacerPedido", function(err, body){
         cuerpo= body.body   
+        var fecha = Date.now();
+        console.log(fecha) 
         console.log(cuerpo)
         res.send(cuerpo)
     })
@@ -27,6 +29,8 @@ app.get('/SolicitarEstadoPedido', (req, res)=>{
     var cuerpo="respuesta solicitud"
     request("http://localhost:2000/SolicitarEstadoPedido ", function(err, body){
         cuerpo= body.body   
+        var fecha = Date.now();
+        console.log(fecha) 
         console.log(cuerpo)
         res.send(cuerpo)
     })
@@ -37,6 +41,8 @@ app.get('/VerificarPedidoRepartidor', (req, res)=>{
     var cuerpo="respuesta solicitud"
     request("http://localhost:2000/VerificarPedidoRepartidor", function(err, body){
         cuerpo= body.body   
+        var fecha = Date.now();
+        console.log(fecha) 
         console.log(cuerpo)
         res.send(cuerpo)
     })

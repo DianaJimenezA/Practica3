@@ -14,11 +14,15 @@ app.get('/', (req, res)=>{
 })
 //Recibir pedido del cliente por medio del ESB
 app.get('/NuevaOrden', (req, res)=>{
+    var fecha = Date.now();
+    console.log(fecha) 
     console.log("Se recibio la orden Correctamente")
     res.send("Pedido Recibido, Su orden fue procesada")
 })
 //Informar Estado del pedido al cliente por medio del ESB
 app.get('/EstadoOrden', (req, res)=>{
+    var fecha = Date.now();
+    console.log(fecha) 
     console.log("El cliente solicito verificacion de Pedido")
     res.send("Pedido en preparacion")
 })
@@ -26,6 +30,8 @@ app.get('/EstadoOrden', (req, res)=>{
 app.get('/NotificarRepartidor', (req, res)=>{
     var cuerpo="respuesta solicitud"
     request("http://localhost:2000/NotificarRepartidor", function(err, body){
+        var fecha = Date.now();
+        console.log(fecha) 
         cuerpo= body.body   
         console.log(cuerpo)
         res.send(cuerpo)
